@@ -1,5 +1,6 @@
 import data
-import helpers
+import helper
+
 
 class TestUrbanRoutes:
     @classmethod
@@ -7,46 +8,59 @@ class TestUrbanRoutes:
         if helpers.is_url_reachable(data.URBAN_ROUTES_URL):
             print("Conectado ao servidor Urban Routes ")
         else:
-            print("Não foi possivel conectar ao Urban Routes.Verifique se o servidor está ligado e ainda em execução")
+            print("Não foi possivel conectar ao Urban Routes.Verifique se o servidor está ligado e ainda em execu
 
     def test_set_route(self):
-        #Adicionar em S8
-        print("função criada para definir a rota")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL
+        routes_page = UrbanRoutesPages(self.driver)
+        routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
+        assert routes_page.get_from_location_value() == data.ADDRESS_FROM
+        assert routes_page.get_from_location_value() == data.ADDRESS_TO
+
 
     def test_select_plan(self):
-        #Adicionar em S8
-        print("função criada para a seleção de plano")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        routes_page = UrbanRoutesPages(self.driver)
+        routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
+        routes_page.click_taxi_option()
+        routes_page.click_comfort_icon()
+        assert routes_page.click_comfort_active()
 
     def test_fill_phone_number(self):
-        #Adicionar em S8
-        print("função criada para preencher o numero de telefone ")
-        pass
+        self.driver.get(data.URBAN_ROUTES
+        routes_page = UrbanRoutesPages(self.driver)
+        routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
+        routes_page.click_taxi_option()
+        routes_page.click_comfort_icon()
+        routes_page.clicl_number_text(data.PHONE_NUMBER)
+        assert data.PHONE_NUMBER in routes_page.numero_confirmado()
 
     def test_fill_card(self):
-        #Adicionar em S8
-        print("função criada para preencher o cartão")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        routes_page = UrbanRoutesPages(self.driver)
+        routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
+        routes_page.click_taxi_option()
+
+
 
     def test_comment_for_driver(self):
-        #Adicionar em S8
-        print("função criada para comentar a corrida")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL
+        routes_page = UrbanRoutesPages(self.driver)
+        routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
+        routes_page.click_taxi_option()
+
+
 
     def test_order_blanket_and_handkerchiefs(self):
-        #Adicionar em S8
-        print("função criada para pedir cobertor e lenço")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL
+        routes_page = UrbanRoutesPages(self.driver)
+        routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
+        routes_page.click_taxi_option()
+
+
 
     def test_order_2_ice_creams(self):
-        number_of_ice_creams =  2
-        for count in range(number_of_ice_creams): # Adicionado ':' e identado o bloco abaixo
-            #Adicionar em S8
-            print("função criada para pedir 2 sorvetes")
-            pass
+        self.driver.get(data.URBAN_ROUTES_URL)
 
     def test_car_search_model_appears(self):
-        #Adicionar em S8
-        print("função criada para encontrar modelos dos carros")
-        pass
+        self.driver.get(data.URBAN
