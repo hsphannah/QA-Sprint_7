@@ -39,12 +39,15 @@ class TestUrbanRoutes:
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
         routes_page.click_taxi_option()
+        assert "Cartão" in routes_page.confirm_cartao()
 
     def test_comment_for_driver(self):
         self.driver.get(data.URBAN_ROUTES_URL)
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.enter_locations(data.ADDRESS_FROM, data.ADDRESS_TO)
         routes_page.click_taxi_option()
+        assert data.MESSAGE_FOR_DRIVER in routes_page.coment_confirm()
+
 
     def test_order_blanket_and_handkerchiefs(self):
         self.driver.get(data.URBAN_ROUTES_URL)
